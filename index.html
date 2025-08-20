@@ -1,38 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="p32">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>p32</title>
-  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Album App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+    header {
+      background: #222;
+      padding: 1rem;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      padding: 12px;
+    }
+    .grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .grid img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <header>
+    <h1>📸 Photo Album App</h1>
+  </header>
+
+  <main>
+    <div class="grid" id="photoGrid"></div>
+  </main>
+
+  <script>
+    // Sample images
+    const sampleImages = [
+      "https://picsum.photos/id/1015/600/400",
+      "https://picsum.photos/id/1025/600/400",
+      "https://picsum.photos/id/1035/600/400",
+      "https://picsum.photos/id/1045/600/400",
+      "https://picsum.photos/id/1055/600/400",
+      "https://picsum.photos/id/1065/600/400"
+    ];
+
+    const grid = document.getElementById("photoGrid");
+
+    sampleImages.forEach(url => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = "Photo";
+      grid.appendChild(img);
+    });
+  </script>
 </body>
 </html>

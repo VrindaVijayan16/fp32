@@ -3,66 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Album App</title>
+  <title>Photo Album</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      background: #fafafa;
     }
+
     header {
-      background: #222;
-      padding: 1rem;
+      position: sticky;
+      top: 0;
+      background: #1976d2;
+      color: white;
+      padding: 16px;
+      font-size: 20px;
+      font-weight: bold;
       text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      padding: 12px;
+      gap: 10px;
+      padding: 10px;
     }
+
     .grid img {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
       border-radius: 10px;
-      transition: transform 0.2s ease;
       cursor: pointer;
+      transition: transform 0.2s ease;
     }
+
     .grid img:hover {
       transform: scale(1.05);
+    }
+
+    /* Fullscreen modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 8px;
+    }
+
+    .modal:target {
+      display: flex;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>📸 Photo Album App</h1>
-  </header>
 
-  <main>
-    <div class="grid" id="photoGrid"></div>
-  </main>
+  <header>Photo Album</header>
 
-  <script>
-    // Sample images
-    const sampleImages = [
-      "https://picsum.photos/id/1015/600/400",
-      "https://picsum.photos/id/1025/600/400",
-      "https://picsum.photos/id/1035/600/400",
-      "https://picsum.photos/id/1045/600/400",
-      "https://picsum.photos/id/1055/600/400",
-      "https://picsum.photos/id/1065/600/400"
-    ];
+  <div class="grid">
+    <a href="#img1"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800"></a>
+    <a href="#img2"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"></a>
+    <a href="#img3"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800"></a>
+    <a href="#img4"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800"></a>
+    <a href="#img5"><img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800"></a>
+    <a href="#img6"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800"></a>
+  </div>
 
-    const grid = document.getElementById("photoGrid");
+  <!-- Fullscreen Viewer -->
+  <div id="img1" class="modal">
+    <a href="#" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200">
+  </div>
 
-    sampleImages.forEach(url => {
-      const img = document.createElement("img");
-      img.src = url;
-      img.alt = "Photo";
-      grid.appendChild(img);
-    });
-  </script>
+  <div id="img2" class="modal">
+    <a href="#" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200">
+  </div>
+
+  <div id="img3" class="modal">
+    <a href="#" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200">
+  </div>
+
+  <div id="img4" class="modal">
+    <a href="#" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1200">
+  </div>
+
+  <div id="img5" class="modal">
+    <a href="#" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200">
+  </div>
+
+  <div id="img6" class="modal">
+    <a href="#" class="close">&times;</a>
+    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200">
+  </div>
+
 </body>
 </html>
